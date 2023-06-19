@@ -1,0 +1,12 @@
+Handyman Services
+
+Project Description:
+
+The main entities in this project are:
+
+Customer entity
+Vendor entity
+Service entity
+Service-Vendor entity
+Appointment entity 
+Feedback entity
