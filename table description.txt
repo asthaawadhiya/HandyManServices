@@ -1,0 +1,183 @@
+table description
+
+create table customers
+( 
+id int auto_increment,
+name varchar(100) not null,
+contact varchar(20) not null,
+address varchar(200) not null,
+email varchar(100) not null unique ,
+constraint pk_CId primary key(Id)
+);
+
+
+
+customers
++---------------+-------------+------+-----+---------+----------------+
+| Field         | Type        | Null | Key | Default | Extra          |
++---------------+-------------+------+-----+---------+----------------+
+| id            | int         | NO   | PRI | NULL    | auto_increment |
+| name          | varchar(100)| NO   |     | NULL    |                |
+| contact       | varchar(20) | NO   |     | NULL    |                |
+| address       | varchar(200)| NO   |     | NULL    |                |
+| email         | varchar(100)| NO   | UNI | NULL    |                |
++---------------+-------------+------+-----+---------+----------------+
+------------------------------------------------------------------------------------------------------------------
+create table vendors
+(
+  id int auto_increment,
+  name varchar(50) not null,
+  address varchar(200) not null,
+  status varchar(20)  not null default 'Available',
+  constraint pk_VId primary key(id)
+);
+
+
+vendors
++---------------+-------------+------+-----+-----------+----------------+
+| Field         | Type        | Null | Key | Default   | Extra          |
++---------------+-------------+------+-----+-----------+----------------+
+| id            | int         | NO   | PRI | NULL      | auto_increment |
+| name          | varchar(50) | NO   |     | NULL      |                |
+| address       | varchar(200)| NO   |     | NULL      |                |
+| vendor_status | varchar(20) | NO   |     | Available |                |
++---------------+-------------+------+-----+-----------+----------------+
+-----------------------------------------------------------------------------------------------------------------
+
+create table services
+(
+ id int auto_increment,
+ type varchar(40) not null,
+ description text,
+ Constraint pk_SId primary key(id)
+);
+
+
+services
++--------------+-------------+------+-----+---------+----------------+
+| Field        | Type        | Null | Key | Default | Extra          |
++--------------+-------------+------+-----+---------+----------------+
+| id           | int         | NO   | PRI | NULL    | auto_increment |
+| service_type | varchar(40) | NO   |     | NULL    |                |
+| description  | text        | YES  |     | NULL    |                |
++--------------+-------------+------+-----+---------+----------------+
+----------------------------------------------------------------------------------------------------------------
+
+create table vendor_Services
+(
+service_id int,
+vendor_id int,
+rates decimal(7,2),
+constraint pk_composit primary key(service_id,vendor_id),
+constraint fk_serviceId foreign key(service_id) references services(id),
+constraint fk_vendorId foreign key(vendor_id) references vendors(id)
+); 
+
+Vendor_Services
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| service_id | int          | NO   | PRI | NULL    |       |
+| vendor_id  | int          | NO   | PRI | NULL    |       |
+| rates      | decimal(7,2) | YES  |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+----------------------------------------------------------------------------------------------------------------
+
+create table appointments
+(
+id int auto_increment,
+customer_id int,
+vendor_id int,
+service_id int,
+service_date date,
+constraint pk_AId primary key(id),
+constraint fk_CustomerId1 foreign key(customer_id) references customers(id),
+constraint fk_VendorId1 foreign key(vendor_id) references vendors(id),
+constraint fk_ServiceId1 foreign key(service_id) references services(id)
+);
+
+appointments
++--------------+------+------+-----+---------+----------------+
+| Field        | Type | Null | Key | Default | Extra          |
++--------------+------+------+-----+---------+----------------+
+| id           | int  | NO   | PRI | NULL    | auto_increment |
+| customer_id  | int  | YES  | MUL | NULL    |                |
+| vendor_id    | int  | YES  | MUL | NULL    |                |
+| service_id   | int  | YES  | MUL | NULL    |                |
+| service_date | date | YES  |     | NULL    |                |
++--------------+------+------+-----+---------+----------------+
+-------------------------------------------------------------------------------------------------------------------
+
+create table feedbacks
+(
+  id int auto_increment,
+  customer_id int,
+  vendor_id int,
+  rating int,
+  comments text,
+  constraint pk_FeedbackId primary key (id),
+  constraint fk_customerId2 foreign key (customer_id) references customers(id),
+  constraint fk_VendorId2 foreign key (vendor_id) references vendors(id)
+);
+
+
+feedbacks
++-------------+------+------+-----+---------+----------------+
+| Field       | Type | Null | Key | Default | Extra          |
++-------------+------+------+-----+---------+----------------+
+| id          | int  | NO   | PRI | NULL    | auto_increment |
+| customer_id | int  | YES  | MUL | NULL    |                |
+| vendor_id   | int  | YES  | MUL | NULL    |                |
+| rating      | int  | YES  |     | NULL    |                |
+| comments    | text | YES  |     | NULL    |                |
++-------------+------+------+-----+---------+----------------+
+---------------------------------------------------------------------------------------------------------------
+create table payments
+(
+id int auto_increment,
+appointment_id int,
+amount decimal(7,2),
+date_time Timestamp,
+constraint pk_PaymentId primary key (id),
+constraint fk_AppointmentId1 foreign key (appointment_id) references appointments(id)
+);
+
+payments
++----------------+--------------+------+-----+---------+----------------+
+| Field          | Type         | Null | Key | Default | Extra          |
++----------------+--------------+------+-----+---------+----------------+
+| id             | int          | NO   | PRI | NULL    | auto_increment |
+| appointment_id | int          | YES  | MUL | NULL    |                |
+| amount         | decimal(7,2) | YES  |     | NULL    |                |
+| date_time      | timestamp    | YES  |     | NULL    |                |
++----------------+--------------+------+-----+---------+----------------+
+----------------------------------------------------------------------------------------------------------------
+create table records
+(
+id int  not null AUTO_INCREMENT,
+appointment_id int,
+customer_id int,
+vendor_id int,
+service_id int,
+appointment_date Date,
+constraint pk_record_Id primary Key(id),
+constraint fk_AppointmentId2 foreign key (appointment_id) references appointments(id),
+constraint fk_CustomerId3 foreign key (customer_id) references customers(id),
+constraint fk_VendorId3 foreign key (vendor_id) references vendors(id),
+constraint fk_ServiceId3 foreign key (service_id) references services(id)
+);
+
+
+
+
+records
++------------------+------+------+-----+---------+----------------+
+| Field            | Type | Null | Key | Default | Extra          |
++------------------+------+------+-----+---------+----------------+
+| id               | int  | NO   | PRI | NULL    | auto_increment |
+| appointment_id   | int  | YES  | MUL | NULL    |                |
+| customer_id      | int  | YES  | MUL | NULL    |                |
+| vendor_id        | int  | YES  | MUL | NULL    |                |
+| service_id       | int  | YES  | MUL | NULL    |                |
+| appointment_date | date | YES  |     | NULL    |                |
++------------------+------+------+-----+---------+----------------+

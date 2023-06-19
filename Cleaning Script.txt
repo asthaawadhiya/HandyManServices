@@ -1,0 +1,35 @@
+-- Drop Foreign Key Constraints
+alter table History drop foreign key fk_AppointmentId2;
+alter table History drop foreign key fk_CustomerId3;
+alter table History drop foreign key fk_VendorId3;
+alter table History drop foreign key fk_ServiceId3;
+alter table Payment drop foreign key fk_AppointmentId1;
+alter table Feedback drop foreign key fk_customerId2;
+alter table Feedback drop foreign key fk_VendorId2;
+alter table Appointment drop foreign key fk_CustomerId1;
+alter table Appointment drop foreign key fk_VendorId1;
+alter table Appointment drop foreign key fk_ServiceId1;
+alter table VendorServices drop foreign key fk_ServiceId;
+alter table VendorServices drop foreign key fk_VendorId;
+
+-- Drop Triggers
+drop trigger if exists populatehistory;
+drop trigger if exists UpdateVendorStatus;
+
+-- Drop Tables
+drop table if exists History;
+drop table if exists Payment;
+drop table if exists Feedback;
+drop table if exists Appointment;
+drop table if exists VendorServices;
+drop table if exists Services;
+drop table if exists Vendors;
+drop table if exists Customers;
+
+
+-- Drop Views
+drop view if exists CustomerAppointments;
+drop view if exists AvailableVendors;
+
+-- Drop Stored Procedures
+drop procedure if exists GetCustomerAppointments;

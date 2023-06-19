@@ -1,0 +1,381 @@
+create table customers
+( 
+id int auto_increment,
+name varchar(100) not null,
+contact varchar(20) not null,
+address varchar(200) not null,
+email varchar(50) not null unique ,
+constraint pk_CId primary key(Id)
+);
+
++---------+--------------+------+-----+---------+----------------+
+| Field   | Type         | Null | Key | Default | Extra          |
++---------+--------------+------+-----+---------+----------------+
+| id      | int          | NO   | PRI | NULL    | auto_increment |
+| name    | varchar(30)  | NO   |     | NULL    |                |
+| contact | varchar(20)  | NO   |     | NULL    |                |
+| address | varchar(200) | NO   |     | NULL    |                |
+| email   | varchar(50)  | NO   | UNI | NULL    |                |
++---------+--------------+------+-----+---------+----------------+
+
+insert into customers(name,contact,address,email)
+values ('Rajesh Tripathi','9432425263','Wing A1 ,Dreams Camellia,Bavdhan,Pune,411004','rajeshrt123@gamil.com');
+
+insert into customers(name,contact,address,email)
+values ('Vishal Shrivastav','7434657903','Survay no-20/14 ,Om Aditya Terraces,Karve Nagar,Pune,411096','vishalm43@gamil.com');
+
+insert into customers(name,contact,address,email)
+values ('Nilam Chauhan ','9908072683','Sr. no. 350,Hotel D Palace Lane,Bavdhan,Pune,410038','nilamsg12@gamil.com');
+
+insert into customers(name,contact,address,email)
+values ('Ram Nikam','7409685683','Shat Taraka apt,Lokmanya Colony,Paud Road,kothrud,Pune,411003','vishalgl243@gamil.com');
+
+insert into customers(name,contact,address,email)
+values ('Rekha Inamdar','8890866309','Shop no.10,Gauri Society,Paud road,Pune,411038','rekha989@gamil.com');
+
+insert into customers(name,contact,address,email)
+values ('Nisha Sawant','8673629098','3rd floor,Suvan Apartment,Mayur Colony,Karve Nagar,Pune,411029','nisha1341@gamil.com');
+
+insert into customers(name,contact,address,email)
+values ('Aditi Wairkar','9423242366','Ashirvad Bunglow,Swati Society,Paud Road,Kothrud,Pune,411089','wairkaradi8@gamil.com');
+
+insert into customers(name,contact,address,email)
+values ('Abhishek Patil','8899993421','Laxmi Society,Senapati Bapat Road,Shivaji Nagar,Pune,411016','abhipatil121@gamil.com');
+
+insert into customers(name,contact,address,email)
+values ('Mitesh Jalvi','9856487812','4th floor,Sneha Ganga ,Swargate Road ,Swargate,411042','miteshjv32@gamil.com');
+
+insert into customers(name,contact,address,email)
+values ('Tejas Joshi','8466768777','a-5,Liberty Society,North Main Road,Koregaon Park,Pune, 411001', 'joshitejas19@gamil.com');
+
+
+create table vendors
+(
+  id int auto_increment,
+  name varchar(50) not null,
+  address varchar(200) not null,
+  status varchar(20)  not null default 'Available',
+  constraint pk_VId primary key(id)
+);
+
++---------+--------------+------+-----+-----------+----------------+
+| Field   | Type         | Null | Key | Default   | Extra          |
++---------+--------------+------+-----+-----------+----------------+
+| id      | int          | NO   | PRI | NULL      | auto_increment |
+| name    | varchar(50)  | NO   |     | NULL      |                |
+| address | varchar(200) | NO   |     | NULL      |                |
+| status  | varchar(20)  | NO   |     | Available |                |
++---------+--------------+------+-----+-----------+----------------+
+insert into vendors(id,name,address)
+values (101,'Pankaj Sharma','Hari shankar joshi Rd,Maratha colony,Pune,400068');
+
+insert into vendors(name,address)
+values ('Ashok Varma','Taj Mahal Palace, Apollo Bunder, Baramati,Pune,400001');
+
+insert into vendors(name,address)
+values ('Sunil Singh','Hiranandani Gardens, Pimpri, Pune,400076');
+
+insert into vendors(name,address)
+values ('Manish Aggarwal','Silver Oak Apartments, Hadapsar, Pune,400051');
+
+insert into vendors(name,address)
+values ('Rahul Mehta','Sea Breeze Residency, Kothrud, Pune,400005');
+
+insert into vendors(name,address)
+values ('Sanjay Gupta','Marigold Towers, Katraj,Pune,400064');
+
+insert into vendors(name,address) 
+values ('Vikram Malhotra','Harmony Residences, Vadgaon, Pune,400014');
+
+insert into vendors(name,address)
+values ('Nishant Arora','Paradise Heights, Kothrud, Pune,400057');
+
+insert into vendors(name,address) 
+values ('Rohan Patel','Oakwood Gardens, Vadgaon, Pune,400063');
+
+insert into vendors(name,address) 
+values ('Ayush Deshmukh','Skyline Apartments, Katraj, Pune,400054');
+
+
+create table services
+(
+ id int auto_increment,
+ type varchar(40) not null,
+ description text,
+ Constraint pk_SId primary key(id)
+);
+
++-------------+-------------+------+-----+---------+----------------+
+| Field       | Type        | Null | Key | Default | Extra          |
++-------------+-------------+------+-----+---------+----------------+
+| id          | int         | NO   | PRI | NULL    | auto_increment |
+| type        | varchar(40) | NO   |     | NULL    |                |
+| description | text        | YES  |     | NULL    |                |
++-------------+-------------+------+-----+---------+----------------+
+
+
+
+insert into services(id,type,description)
+values(11,'Electrical work','Light installation,Fan repair, switch installation,inverter and stabilizer repair,door bell repair and replacenment with the help of an expert');
+insert into services(type,description)
+values('Plumber','water pipeline lekage, wash basin blockage, installation of basin,overhead tank installation or repair or cleaning or leakage check,Expert plumber for on site incpection and repair');
+insert into services(type,description)
+values('Carpenter','Expert Carpenter for on site inspection and repair');
+insert into services(type,description)
+values('House paint','Includes Putty and Primer Application,waterproofing, tile grouting, crack repair for single room, full house,semi furnised flat');
+insert into services(type,description)
+values('Cleaning','Intense and Deep Cleaning for Bathroom,Hall,Kitchen or full home or single room');
+insert into services(type,description)
+values('Pest Control','Cockroch,ant and general pest,Termite control,Bed Bug control procedure may take 2 week long');
+insert into services(type,description)
+values('Electronic appliance repair','AC,Air cooler,laptop,Gyser,microwave,television,washing macine repair and installation or unistallation');
+insert into services(type,description)
+values('Womens Spa and Salon','Hair cut,BlowDry and Stying,Hair care and spa, Trip and Style,Keratine and Hair Botox, hair color ');
+insert into services(type,description)
+values('Men Saloon and Massaage','Prime,Aurveda,Royal');
+insert into services(type,description)
+values('Maid-Servant','All the daily activitesstarting from washing dishes,cleaning rooms,washing clothes and many more');
+
+
+create table vendorServices
+(
+service_id int,
+vendor_id int,
+rates decimal(7,2),
+constraint pk_composit primary key(service_id,vendor_id),
+constraint fk_serviceId foreign key(service_id) references services(id),
+constraint fk_vendorId foreign key(vendor_id) references vendors(id)
+); 
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| service_id | int          | NO   | PRI | NULL    |       |
+| vendor_id  | int          | NO   | PRI | NULL    |       |
+| rates      | decimal(7,2) | YES  |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+
+insert into vendorServices
+values (11,101,2055.00);
+
+insert into vendorServices
+values (12,102,3000.50);
+
+insert into vendorServices
+values (13,103,2000.10);
+
+insert into vendorServices
+values (14,104,2080.00);
+
+insert into vendorServices
+values (15,105,2000.30);
+
+insert into vendorServices
+values (16,106,2020.25);
+
+insert into vendorServices
+values (17,107,3000.60);
+
+insert into vendorServices
+values (18,108,2050.55);
+
+insert into vendorServices
+values (19,109,2050.44);
+
+insert into vendorServices
+values (20,110,3020.00);
+
+
+
+=================================
+create table appointments
+(
+id int auto_increment,
+customer_id int,
+vendor_id int,
+service_id int,
+service_date date,
+constraint pk_AId primary key(id),
+constraint fk_CustomerId1 foreign key(customer_id) references customers(id),
+constraint fk_VendorId1 foreign key(vendor_id) references vendors(id),
+constraint fk_ServiceId1 foreign key(service_id) references services(id)
+);
++--------------+------+------+-----+---------+----------------+
+| Field        | Type | Null | Key | Default | Extra          |
++--------------+------+------+-----+---------+----------------+
+| id           | int  | NO   | PRI | NULL    | auto_increment |
+| customer_id  | int  | YES  | MUL | NULL    |                |
+| vendor_id    | int  | YES  | MUL | NULL    |                |
+| service_id   | int  | YES  | MUL | NULL    |                |
+| service_date | date | YES  |     | NULL    |                |
++--------------+------+------+-----+---------+----------------+
+
+
+
+
+create table feedbacks
+(
+  id int auto_increment,
+  customer_id int,
+  vendor_id int,
+  rating int,
+  comments text,
+  constraint pk_FeedbackId primary key (id),
+  constraint fk_customerId2 foreign key (customer_id) references customers(id),
+  constraint fk_VendorId2 foreign key (vendor_id) references vendors(id)
+);
++-------------+------+------+-----+---------+----------------+
+| Field       | Type | Null | Key | Default | Extra          |
++-------------+------+------+-----+---------+----------------+
+| id          | int  | NO   | PRI | NULL    | auto_increment |
+| customer_id | int  | YES  | MUL | NULL    |                |
+| vendor_id   | int  | YES  | MUL | NULL    |                |
+| rating      | int  | YES  |     | NULL    |                |
+| comments    | text | YES  |     | NULL    |                |
++-------------+------+------+-----+---------+----------------+
+
+insert into feedbacks (id, customer_id, vendor_id, rating, comments)
+values(1001, 1, 101, 4, 'Great service');
+Insert into feedbacks(customer_id,vendor_id,rating,comments)
+values
+  ( 2, 102, 3, 'Good service'),
+  ( 3, 103, 5, 'Exceptional service'),
+  ( 4, 104, 2, 'Poor service'),
+  ( 5, 105, 1, 'unsatisfactory experience'),
+  ( 6, 106, 5, 'high-quality work'),
+  ( 7, 107, 1, 'Poor service'),
+  ( 8, 108, 4, 'Great service'),
+  ( 9, 109, 2, 'slow response time'),
+  (10, 110, 2, 'unsatisfactory experience');
+
+=================================
+create table payments
+(
+id int auto_increment,
+appointment_id int,
+amount decimal(7,2),
+date_time Timestamp,
+constraint pk_PaymentId primary key (id),
+constraint fk_AppointmentId1 foreign key (appointment_id) references appointments(id)
+);
++----------------+--------------+------+-----+---------+----------------+
+| Field          | Type         | Null | Key | Default | Extra          |
++----------------+--------------+------+-----+---------+----------------+
+| id             | int          | NO   | PRI | NULL    | auto_increment |
+| appointment_id | int          | YES  | MUL | NULL    |                |
+| amount         | decimal(7,2) | YES  |     | NULL    |                |
+| date_time      | timestamp    | YES  |     | NULL    |                |
++----------------+--------------+------+-----+---------+----------------+
+
+create table records
+(
+id int  not null AUTO_INCREMENT,
+appointment_id int,
+customer_id int,
+vendor_id int,
+service_id int,
+appointment_date Date,
+constraint pk_record_Id primary Key(id),
+constraint fk_AppointmentId2 foreign key (appointment_id) references appointments(id),
+constraint fk_CustomerId3 foreign key (customer_id) references customers(id),
+constraint fk_VendorId3 foreign key (vendor_id) references vendors(id),
+constraint fk_ServiceId3 foreign key (service_id) references services(id)
+);
+
+
+
+
+
+
+
+
+--RECORD TRIGGER
+delimiter $$
+create trigger populateRecords
+after insert on appointments
+for each row
+begin
+  insert into records (appointment_id, customer_id, vendor_id, service_id, appointment_date)
+  values (new.id, new.customer_id, new.vendor_id, new.service_id, new.service_date);
+end $$
+delimiter ;
+
+
+--UPDATEVENDORSTATUS
+
+delimiter $$
+create trigger update_vendor_status
+before insert on appointments
+for each row
+begin
+  declare occupied_count int;
+  select count(*) into occupied_count
+  from appointments
+  where vendor_id = new.vendor_id and service_date = new.service_date;
+
+  if occupied_count > 0 then
+    update vendors
+    set vendor_status = 'occupied'
+    where vendor_id = new.vendor_id;
+  else
+    update vendors
+    set vendor_status = 'available'
+    where vendor_id = new.vendor_id;
+  end if;
+end $$
+delimiter ;
+
+
+--VIEW CUSTOMERAPPOINTMENTS
+
+create view customer_appointments as
+select c.id as customer_id, c.name as customer_name, c.contact as customer_contact, c.email as customer_email,
+       a.id as appointment_id, v.name as vendor_name, s.type as service_type, a.service_date
+from customers c
+join appointments a on c.id = a.customer_id
+join vendors v on a.vendor_id = v.id
+join services s on a.service_id = s.id;
+
+
+
+
+--VIEW APPOINTMENTPAYMENTS FOR THE ADMIN
+
+create view appointment_payments as
+select a.id as appointment_id, c.name as customer_name, v.name as vendor_name, s.type as service_type, a.service_date,
+       p.amount, p.date_time
+from appointments a
+join customers c on a.customer_id = c.id
+join vendors v on a.vendor_id = v.id
+join services s on a.service_id = s.id
+left join payments p on a.id = p.appointment_id;
+
+
+
+---STORED PROCEDURE TO CALL CUSTOMER APPOINTMENT call GetCustomerAppointments(1);
+delimiter //
+
+create procedure getcustomerappointments (in customerid int)
+begin
+    select a.id as appointment_id, c.name as customer_name, v.name as vendor_name, s.type as service_type, a.service_date
+    from appointments a
+    join customers c on a.customer_id = c.id
+    join vendors v on a.vendor_id = v.id
+    join services s on a.service_id = s.id
+    where c.id = customerid;
+
+
+end //
+
+delimiter ;
+
+---Procedures to delete customer call delete_customer(1)
+delimiter //
+create procedure delete_customer(in cust_id int)
+begin
+delete
+from appointments
+where customer_id=cust_id;
+end //
+delimiter ;
+
+
