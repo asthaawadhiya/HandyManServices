@@ -1,0 +1,133 @@
+_________________________________________________________________________________
+Customers table
+_________________________________________________________________________________
+CREATE TABLE Customers (
+  CustomerId INT,
+  CustomerName VARCHAR(30) NOT NULL,
+  Contact VARCHAR(13) NOT NULL,
+  Address VARCHAR(70) NOT NULL,
+  Email VARCHAR(25),
+  constraint pk primary key(CustomerId)
+);
+_________________________________________________________________________________
+Vendors table
+_________________________________________________________________________________
+CREATE TABLE Vendors (
+  VendorId INT,
+  VendorName VARCHAR(30) NOT NULL,
+  Address VARCHAR(60) NOT NULL,
+  Vendor_status VARCHAR(20) default 'Available',
+  constraint pk primary key(VendorId)
+);
+_________________________________________________________________________________
+Services table
+_________________________________________________________________________________
+CREATE TABLE Services (
+  ServiceId INT PRIMARY KEY,
+  ServiceType VARCHAR(20),
+  Description VARCHAR(30)
+  constraint pk primary key(ServiceId)
+);
+
+_________________________________________________________________________________
+Vendor_Services table (many-to-many relationship between Vendors and Services)
+_________________________________________________________________________________
+CREATE TABLE Vendor_Services (
+  ServiceId INT,
+  VendorId INT,
+  Rate DECIMAL(7,2),
+  PRIMARY KEY (VendorId, ServiceId),
+  FOREIGN KEY (VendorId) REFERENCES Vendors(VendorId),
+  FOREIGN KEY (ServiceId) REFERENCES Services(ServiceId)
+);
+
+_________________________________________________________________________________
+Appointment table
+_________________________________________________________________________________
+CREATE TABLE Appointment (
+  AppointmentId INT PRIMARY KEY,
+  CustomerId INT,
+  VendorId INT,
+  ServiceId INT,
+  AppointmentDate DATE,
+  FOREIGN KEY (CustomerId) REFERENCES Customers(CustomerId),
+  FOREIGN KEY (VendorId) REFERENCES Vendors(VendorId),
+  FOREIGN KEY (ServiceId) REFERENCES Services(ServiceId)
+);
+
+_________________________________________________________________________________
+Feedback table
+_________________________________________________________________________________
+CREATE TABLE Feedback (
+  FeedbackId INT PRIMARY KEY,
+  CustomerId INT,
+  VendorId INT,
+  Rating INT,
+  Comments TEXT,
+  FOREIGN KEY (CustomerId) REFERENCES Customers(CustomerId),
+  FOREIGN KEY (VendorId) REFERENCES Vendors(VendorId)
+);
+
+
+_________________________________________________________________________________
+History table
+_________________________________________________________________________________
+CREATE TABLE History (
+  HistoryId INT PRIMARY KEY,
+  AppointmentId INT,
+  CustomerId INT,
+  VendorId INT,
+  ServiceId INT,
+  AppointmentDate DATE,
+  FOREIGN KEY (AppointmentId) REFERENCES Appointment(AppointmentId),
+  FOREIGN KEY (CustomerId) REFERENCES Customers(CustomerId),
+  FOREIGN KEY (VendorId) REFERENCES Vendors(VendorId),
+  FOREIGN KEY (ServiceId) REFERENCES Services(ServiceId)
+);
+
+
+_________________________________________________________________________________
+trigger to populate data into History table
+_________________________________________________________________________________
+CREATE TRIGGER PopulateHistory
+AFTER INSERT ON Appointment
+FOR EACH ROW
+BEGIN
+  INSERT INTO History (HistoryId, AppointmentId, CustomerId, VendorId, ServiceId, AppointmentDate)
+  VALUES (NEW.AppointmentId, NEW.AppointmentId, NEW.CustomerId, NEW.VendorId, NEW.ServiceId, NEW.AppointmentDate);
+END;
+_________________________________________________________________________________
+
+Trigger to update vendor's status in Vendor table after checking Vendor's Availability
+_________________________________________________________________________________
+CREATE TRIGGER UpdateVendorStatus
+BEFORE INSERT ON Appointment
+FOR EACH ROW
+BEGIN
+  DECLARE occupiedCount INT;
+  
+  -- Check if the vendor is occupied during the specified date/time
+  SELECT COUNT(*) INTO occupiedCount
+  FROM Appointment
+  WHERE VendorId = NEW.VendorId
+  AND AppointmentDate = NEW.AppointmentDate;
+    
+  -- Update the vendor's status in the Vendors table
+  IF occupiedCount > 0 THEN
+    UPDATE Vendors
+    SET Status = 'Occupied'
+    WHERE VendorId = NEW.VendorId;
+  ELSE
+    UPDATE Vendors
+    SET Status = 'Available'
+    WHERE VendorId = NEW.VendorId;
+  END IF;
+END;
+_________________________________________________________________________________
+
+
+
+
+
+
+
