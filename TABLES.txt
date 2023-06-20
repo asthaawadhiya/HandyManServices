@@ -1,0 +1,105 @@
+                                       Customers
++------------+-------------------+------------+----------------------------------------------------------------+------------------------+
+| CustomerId | CustomerName      | Contact    | Address                                                        | Email                  |
++------------+-------------------+------------+----------------------------------------------------------------+------------------------+
+|          1 | Rajesh Tripathi   | 9432425263 | Wing A1 ,Dreams Camellia,Bavdhan,Pune,411004                   | rajeshrt123@gamil.com  |
+|          2 | Vishal Shrivastav | 7434657903 | Survay no-20/14 ,Om Aditya Terraces,Karve Nagar,Pune,411096    | vishalm43@gamil.com    |
+|          3 | Nilam Chauhan     | 9908072683 | Sr. no. 350,Hotel D Palace Lane,Bavdhan,Pune,410038            | nilamsg12@gamil.com    |
+|          4 | Ram Nikam         | 7409685683 | Shat Taraka apt,Lokmanya Colony,Paud Road,kothrud,Pune,411003  | vishalgl243@gamil.com  |
+|          5 | Rekha Inamdar     | 8890866309 | Shop no.10,Gauri Society,Paud road,Pune,411038                 | rekha989@gamil.com     |
+|          6 | Nisha Sawant      | 8673629098 | 3rd floor,Suvan Apartment,Mayur Colony,Karve Nagar,Pune,411029 | nisha1341@gamil.com    |
+|          7 | Aditi Wairkar     | 9423242366 | Ashirvad Bunglow,Swati Society,Paud Road,Kothrud,Pune,411089   | wairkaradi8@gamil.com  |
+|          8 | Abhishek Patil    | 8899993421 | Laxmi Society,Senapati Bapat Road,Shivaji Nagar,Pune,411016    | abhipatil121@gamil.com |
+|          9 | Mitesh Jalvi      | 9856487812 | 4th floor,Sneha Ganga ,Swargate Road ,Swargate,411042          | miteshjv32@gamil.com   |
+|         10 | Tejas Joshi       | 8466768777 | a-5,Liberty Society,North Main Road,Koregaon Park,Pune, 411001 | joshitejas19@gamil.com |
++------------+-------------------+------------+----------------------------------------------------------------+------------------------+
+
+                                    Vendors
++----------+-----------------+-------------------------------------------------------+---------------+
+| VendorId | VendorName      | Address                                               | vendor_status |
++----------+-----------------+-------------------------------------------------------+---------------+
+|      101 | Pankaj Sharma   | Hari shankar joshi Rd,Maratha colony,Mumbai,400068    | Available     |
+|      102 | Ashok Varma     | Taj Mahal Palace, Apollo Bunder, Colaba,Mumbai,400001 | Available     |
+|      103 | Sunil Singh     | Hiranandani Gardens, Powai, Mumbai,400076             | Available     |
+|      104 | Manish Aggarwal | Silver Oak Apartments, Bandra East, Mumbai,400051     | Available     |
+|      105 | Rahul Mehta     | Sea Breeze Residency, Colaba, Mumbai,400005           | Available     |
+|      106 | Sanjay Gupta    | Marigold Towers, Malad West, Mumbai,400064            | Available     |
+|      107 | Vikram Malhotra | Harmony Residences, Dadar, Mumbai,400014              | Available     |
+|      108 | Nishant Arora   | Paradise Heights, Vile Parle, Mumbai,400057           | Available     |
+|      109 | Rohan Patel     | Oakwood Gardens, Goregaon East, Mumbai,400063         | Available     |
+|      110 | Ayush Deshmukh  | Skyline Apartments, Santacruz West, Mumbai,400054     | Available     |
++----------+-----------------+-------------------------------------------------------+---------------+
+                                             
+                                           Services
++-----------+-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ServiceId | ServiceType                 | Description                                                                                                                                                                          |
++-----------+-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|        11 | Electrical work             | Light installation,Fan repair, switch installation,inverter and stabilizer repair,door bell repair and replacenment with the help of an expert                                       |
+|        22 | Plumber                     | water pipeline lekage, wash basin blockage, installation of basin,overhead tank installation or repair or cleaning or leakage check,Expert plumber for on site incpection and repair |
+|        44 | House paint                 | Includes Putty and Primer Application,waterproofing, tile grouting, crack repair for single room, full house,semi furnised flat                                                      |
+|        55 | Cleaning                    | Intense and Deep Cleaning for Bathroom,Hall,Kitchen or full home or single room                                                                                                      |
+|        66 | Pest Control                | Cockroch,ant and general pest,Termite control,Bed Bug control procedure may take 2 week long                                                                                         |
+|        77 | Electronic appliance repair | AC,Air cooler,laptop,Gyser,microwave,television,washing macine repair and installation or unistallation                                                                              |
+|        88 | Womens Spa and Salon        | Hair cut,BlowDry and Stying,Hair care and spa, Trip and Style,Keratine and Hair Botox, hair color                                                                                    |
+|        99 | Men Saloon and Massaage     | Prime,Aurveda,Royal                                                                                                                                                                  |
++-----------+-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+ServiceVendor
++-----------+----------+---------+
+| ServiceId | VendorId | Rates   |
++-----------+----------+---------+
+|        11 |      101 | 2055.00 |
+|        22 |      102 | 3000.50 |
+|        44 |      104 | 2080.00 |
+|        55 |      105 | 2000.30 |
+|        66 |      106 | 2020.25 |
+|        77 |      107 | 3000.60 |
+|        88 |      108 | 2050.55 |
+|        99 |      109 | 2050.44 |
++-----------+----------+---------+
+Appointment
++---------------+------------+----------+-----------+-------------+
+| AppointmentId | CustomerId | VendorId | ServiceId | Servicedate |
++---------------+------------+----------+-----------+-------------+
+|            10 |          1 |      101 |        11 | 2023-05-22  |
+|            20 |          2 |      102 |        22 | 2023-05-23  |
+|            40 |          4 |      104 |        44 | 2023-05-25  |
+|            50 |          5 |      105 |        55 | 2023-05-26  |
+|            60 |          6 |      106 |        66 | 2023-05-27  |
+|            70 |          7 |      107 |        77 | 2023-05-28  |
+|            80 |          8 |      108 |        88 | 2023-05-29  |
+|            90 |          9 |      109 |        99 | 2023-05-30  |
++---------------+------------+----------+-----------+-------------+
+
+Feedback
++------------+------------+----------+--------+---------------------------+
+| FeedbackId | CustomerId | VendorId | Rating | Comments                  |
++------------+------------+----------+--------+---------------------------+
+|       1001 |          1 |      101 |      4 | Great service             |
+|       1002 |          2 |      102 |      3 | Good service              |
+|       1003 |          3 |      103 |      5 | Exceptional service       |
+|       1004 |          4 |      104 |      2 | Poor service              |
+|       1005 |          5 |      105 |      1 | unsatisfactory experience |
+|       1006 |          6 |      106 |      5 | high-quality work         |
+|       1007 |          7 |      107 |      1 | Poor service              |
+|       1008 |          8 |      108 |      4 | Great service             |
+|       1009 |          9 |      109 |      2 | slow response time        |
+|       1010 |         10 |      110 |      2 | unsatisfactory experience |
++------------+------------+----------+--------+---------------------------+
+
+Payment
++-----------+---------------+---------+---------------------+
+| PaymentId | AppointmentId | Amount  | DateTime            |
++-----------+---------------+---------+---------------------+
+|     11111 |            10 | 2055.00 | 2023-05-22 09:30:00 |
+|     22222 |            20 | 3000.50 | 2023-05-23 07:30:00 |
+|     44444 |            40 | 2080.00 | 2023-05-25 10:48:00 |
+|     55555 |            50 | 2000.30 | 2023-05-26 14:15:00 |
+|     66666 |            60 | 2020.00 | 2023-05-27 12:30:00 |
+|     77777 |            70 | 3000.60 | 2023-05-28 10:50:00 |
+|     88888 |            80 | 2050.55 | 2023-05-29 16:20:00 |
+|     99999 |            90 | 2050.44 | 2023-05-30 19:30:00 |
++-----------+---------------+---------+---------------------+
+
+
+
