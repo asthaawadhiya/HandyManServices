@@ -1,0 +1,8 @@
+1.Javascript can be used for client side scripting as well as server side scripting. Justify this statement
+2.How node JS is different than traditional web technologies? Highlight on non-blocking IO
+3.What is use of http module of Node JS?
+4.What are the features of Express JS?
+5.Explain the functionality in details which is used for developing Express routes.
+6.What is the concept of middlewares? What are different types of middlewares available in Express?
+7.How to bind the data accepted from user though the react form to component state?
+8.What are the different ways by which jquery can be made available to HTML page?
